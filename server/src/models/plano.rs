@@ -11,4 +11,8 @@ pub struct PlanoInfo {
 pub enum Beneficios {
     CanalEsportes,
     CanalNoticias,
+    CanalDesenhos,
+    CanalAberto,
+    Suporte24Horas,
+    ParticipacaoSorteios,
 }

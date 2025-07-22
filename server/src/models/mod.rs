@@ -1,2 +1,2 @@
-pub mod plano; 
 pub mod pessoa;
+pub mod plano;
