@@ -70,11 +70,23 @@ async fn main() -> Result<(), GenericError> {
     println!("Criando rotas...");
     let app: Router = axum::Router::new()
         .route("/", get(services::root))
-        .route("/api/assinarPlano", post(services::api::assinar_plano))
-        .route("/api/cancelarPlano", delete(services::api::cancelar_plano))
-        .route("/api/getPlano", get(services::api::get_plano))
-        .route("/api/melhorarPlano", put(services::api::melhorar_plano))
-        .route("/api/rebaixarPlano", put(services::api::rebaixar_plano))
+        .route(
+            "/api/assinarPlano/{plano_idx}",
+            post(services::api::assinar_plano),
+        )
+        .route(
+            "/api/cancelarPlano",
+            delete(services::api::cancelar_plano),
+        )
+        .route("/api/getPlano", post(services::api::get_plano))
+        .route(
+            "/api/melhorarPlano",
+            put(services::api::melhorar_plano),
+        )
+        .route(
+            "/api/rebaixarPlano",
+            put(services::api::rebaixar_plano),
+        )
         .with_state(GLOBAL_STATE.clone())
         .layer(cors);
 
