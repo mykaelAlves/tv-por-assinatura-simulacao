@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 pub enum Plano {
     Ultra(PlanoInfo),
     Premium(PlanoInfo),
@@ -5,6 +7,7 @@ pub enum Plano {
 }
 
 pub struct PlanoInfo {
+    pub id: u8,
     pub beneficios: Vec<Beneficios>,
 }
 

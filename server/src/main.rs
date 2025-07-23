@@ -29,6 +29,7 @@ static GLOBAL_STATE: LazyLock<Arc<Mutex<GlobalState>>> = LazyLock::new(|| {
     Arc::new(Mutex::new(GlobalState {
         planos_disponiveis: vec![
             Arc::new(Mutex::new(Plano::Ultra(PlanoInfo {
+                id: 0,
                 beneficios: vec![
                     Beneficios::CanalEsportes,
                     Beneficios::CanalDesenhos,
@@ -39,6 +40,7 @@ static GLOBAL_STATE: LazyLock<Arc<Mutex<GlobalState>>> = LazyLock::new(|| {
                 ],
             }))),
             Arc::new(Mutex::new(Plano::Premium(PlanoInfo {
+                id: 1,
                 beneficios: vec![
                     Beneficios::CanalDesenhos,
                     Beneficios::CanalNoticias,
@@ -47,6 +49,7 @@ static GLOBAL_STATE: LazyLock<Arc<Mutex<GlobalState>>> = LazyLock::new(|| {
                 ],
             }))),
             Arc::new(Mutex::new(Plano::Basico(PlanoInfo {
+                id: 2,
                 beneficios: vec![
                     Beneficios::CanalDesenhos,
                     Beneficios::CanalAberto,
@@ -67,7 +70,7 @@ async fn main() -> Result<(), GenericError> {
     println!("Criando rotas...");
     let app: Router = axum::Router::new()
         .route("/", get(services::root))
-        .route("/api/assinarPlano/:plano_repr", post(services::api::assinar_plano))
+        .route("/api/assinarPlano", post(services::api::assinar_plano))
         .route("/api/cancelarPlano", delete(services::api::cancelar_plano))
         .route("/api/getPlano", get(services::api::get_plano))
         .route("/api/melhorarPlano", put(services::api::melhorar_plano))
