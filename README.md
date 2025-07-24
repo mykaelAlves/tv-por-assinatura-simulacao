@@ -1,4 +1,4 @@
-# Análise Técnica da Implementação do Servidor em Rust
+# Análise da Implementação do Servidor em Rust
 
 O backend da aplicação de simulação de TV por assinatura foi desenvolvido em **Rust**, utilizando um conjunto de bibliotecas modernas do ecossistema para criar uma **API RESTful assíncrona, segura e eficiente**. A seguir, detalhamos os principais componentes da arquitetura.
 
