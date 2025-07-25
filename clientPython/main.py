@@ -5,11 +5,9 @@ import os
 API_BASE_URL = 'http://127.0.0.1:9999'
 
 def limpar_tela():
-    """Limpa o console do terminal."""
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def get_client_data():
-    """Solicita os dados do cliente (ID e Nome) no terminal."""
     try:
         id_input = input("Digite o ID do cliente: ")
         nome = input("Digite o Nome do cliente: ")
@@ -26,22 +24,13 @@ def get_client_data():
         return None
 
 def display_result(status, data):
-    """Exibe o resultado da requisição de forma formatada."""
     print("\n--- Resultado da Operação ---")
-    # Formata o dicionário Python em uma string JSON legível
     pretty_data = json.dumps(data, indent=2, ensure_ascii=False)
     print(f"Status: {status}\n")
     print(f"Resposta:\n{pretty_data}")
     print("----------------------------")
 
 async def make_api_request(endpoint, method):
-    """
-    Coleta os dados do cliente e envia uma requisição para a API.
-    
-    Args:
-        endpoint (str): O endpoint da API a ser chamado (ex: '/api/getPlano').
-        method (str): O método HTTP a ser usado ('POST', 'PUT', 'DELETE').
-    """
     cliente = get_client_data()
     if not cliente:
         return 
@@ -75,7 +64,6 @@ async def make_api_request(endpoint, method):
         display_result("Erro de Conexão", error_data)
 
 def exibir_menu():
-    """Exibe o menu de opções para o usuário."""
     print(" --- Cliente da API de Planos --- ")
     print("\n-- Assinaturas --")
     print("1. Assinar Plano Básico")
@@ -90,7 +78,6 @@ def exibir_menu():
     return input("\nEscolha uma opção: ")
 
 async def main():
-    """Função principal que gerencia o loop do menu."""
     while True:
         limpar_tela()
         escolha = exibir_menu()

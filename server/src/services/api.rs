@@ -10,7 +10,7 @@ use serde::Serialize;
 use tokio::sync::Mutex;
 
 use crate::{
-    models::{pessoa::Cliente, plano::Plano},
+    models::pessoa::Cliente,
     GlobalState,
 };
 
@@ -47,7 +47,7 @@ pub async fn assinar_plano(
             )
                 .into_response();
         }
-    };
+    }; 
 
     global_state_guard
         .assinaturas

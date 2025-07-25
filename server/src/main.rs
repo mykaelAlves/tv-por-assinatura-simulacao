@@ -10,14 +10,13 @@ use axum::{
 };
 use tokio::{
     net::TcpListener,
-    sync::{Mutex, RwLock},
+    sync::Mutex,
 };
 use tower_http::cors::{Any, CorsLayer};
 
 use server::{
     GlobalState,
     models::{
-        pessoa::Cliente,
         plano::{Beneficios, Plano, PlanoInfo},
     },
     services,
